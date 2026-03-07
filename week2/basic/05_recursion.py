@@ -35,9 +35,16 @@ def factorial(n):
     # TODO: base case를 작성하세요
     # n이 0이거나 1이면 1을 반환
     pass
+    result = 1
+    if n == 0 or n == 1:
+        return result
     
     # TODO: recursive case를 작성하세요
     pass
+    if n > 1:
+        for i in range(n):
+            result = result * (i+1)
+    return result
 
 def fibonacci(n):
     """
@@ -52,9 +59,24 @@ def fibonacci(n):
     # TODO: base case를 작성하세요
     # n이 0이면 0, n이 1이면 1 반환
     pass
-    
+
+    if n == 0 or n == 1:
+        return n
+
     # TODO: recursive case를 작성하세요
     pass
+    fibonacci_sequence = [0, 1] 
+    result = 0
+
+    if n >= 2:
+        for i in range(2, n+1):
+            fibonacci_sequence.append(fibonacci_sequence[i-2] + fibonacci_sequence[i-1])
+    
+    result = fibonacci_sequence[i]
+            
+    return result
+
+
 
 # 테스트 케이스
 if __name__ == "__main__":

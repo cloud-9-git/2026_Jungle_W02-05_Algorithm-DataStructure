@@ -45,7 +45,11 @@ def find_two_sum_pairs(nums, target):
     ## 내부 반복문: j는 i+1부터 n까지 (중복 방지)
     ## nums[i] + nums[j]가 target과 같으면 (i, j)를 결과에 추가
     pass  
-    
+    for i in range(len(nums)-1):
+        for j in range(i+1, len(nums)):
+            if nums[i]+nums[j] == target:
+                pairs.append((i, j))
+
     return pairs
 
 # 테스트 케이스
