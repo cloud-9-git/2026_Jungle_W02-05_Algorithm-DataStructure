@@ -14,11 +14,16 @@ for i in range(nums_len):
     elif nums[i] == 2:
         primeNum_count += 1
         continue
+    elif nums[i] == 3:
+         primeNum_count += 1
+         continue
     elif nums[i] % 2 != 0:
             for j in range(3, nums[i], 2):
                 if nums[i] % j == 0:
                     break
             else: 
                 primeNum_count += 1
+    else:
+         continue
 print(primeNum_count)
                 
