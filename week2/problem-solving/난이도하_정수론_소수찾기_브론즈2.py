@@ -9,12 +9,12 @@ primeNum_count = 0
 for i in range(nums_len):
     if nums[i] == 0:
         continue
-    if nums[i] == 1:
+    elif nums[i] == 1:
         continue
-    if nums[i] == 2:
+    elif nums[i] == 2:
         primeNum_count += 1
         continue
-    if nums[i] % 2 != 0:
+    elif nums[i] % 2 != 0:
             for j in range(3, nums[i], 2):
                 if nums[i] % j == 0:
                     break
