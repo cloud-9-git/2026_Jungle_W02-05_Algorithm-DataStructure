@@ -40,14 +40,13 @@ def partition(arr, low, high):
     # TODO: i는 작은 원소들의 마지막 인덱스를 추적
     i = low - 1
 
-
     # TODO: low부터 high-1까지 순회하면서
     ## 현재 원소가 피벗보다 작거나 같으면:
     ##   1. i를 1 증가
     ##   2. arr[i]와 arr[j]를 교환
-    for j in range(low, high - 1):
-        i = i + 1
-        if arr[j] < pivot:
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i = i + 1
             arr[i], arr[j] = arr[j], arr[i]
     
     # TODO: 피벗을 올바른 위치(i+1)에 배치
