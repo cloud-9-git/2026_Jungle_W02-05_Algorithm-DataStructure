@@ -64,6 +64,7 @@ jobs:
             fi
 
             mkdir -p ${{ secrets.EC2_APP_DIR }}
+            sudo chown -R "$USER:$USER" ${{ secrets.EC2_APP_DIR }}
             cd ${{ secrets.EC2_APP_DIR }}
             if [ ! -f docker-compose.yml ]; then
               cat > docker-compose.yml <<'EOF'
