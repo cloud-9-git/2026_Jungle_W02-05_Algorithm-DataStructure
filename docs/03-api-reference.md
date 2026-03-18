@@ -52,6 +52,20 @@
 ### 3.4 `GET /v1/kv/exists?key={key}`
 응답: `{ "exists": true|false }`
 
+#### 단계 1 기본 응답 예시 (AI 틀)
+
+`POST /v1/kv/set` 성공:
+
+```json
+{ "success": true, "data": { "stored": true } }
+```
+
+`GET /v1/kv/get` 실패(키 없음):
+
+```json
+{ "success": false, "error": { "code": "KEY_NOT_FOUND", "message": "key not found" } }
+```
+
 ### 3.5 `POST /v1/kv/expire`
 요청: `{ "key": "user:1", "seconds": 60 }`  
 응답: `{ "updated": true|false }`

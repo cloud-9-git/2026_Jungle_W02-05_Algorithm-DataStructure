@@ -1,0 +1,31 @@
+from fastapi.testclient import TestClient
+
+from app.main import app
+
+
+def test_set_success_template() -> None:
+    client = TestClient(app)
+    response = client.post("/v1/kv/set", json={"key": "user:1", "value": "kim"})
+
+    assert response.status_code == 200
+    assert response.json() == {"success": True, "data": {"stored": True}}
+
+
+def test_get_failure_template() -> None:
+    client = TestClient(app)
+    response = client.get("/v1/kv/get", params={"key": "missing:key"})
+
+    assert response.status_code == 404
+    assert response.json() == {
+        "success": False,
+        "error": {"code": "KEY_NOT_FOUND", "message": "key not found"},
+    }
+
+
+def test_exists_success_template() -> None:
+    client = TestClient(app)
+    client.post("/v1/kv/set", json={"key": "user:2", "value": "lee"})
+    response = client.get("/v1/kv/exists", params={"key": "user:2"})
+
+    assert response.status_code == 200
+    assert response.json() == {"success": True, "data": {"exists": True}}
