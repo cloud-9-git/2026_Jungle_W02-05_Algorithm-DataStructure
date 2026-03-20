@@ -115,3 +115,19 @@ if __name__ == "__main__":
     print(f"중위 순회: {inorder(root)}")
     print(f"후위 순회: {postorder(root)}")
 
+'''
+def preorder(root):
+    if not root:
+        return []
+    return [root.value] + preorder(root.left) + preorder(root.right)
+
+def inorder(root):
+    if not root:
+        return []
+    return inorder(root.left) + [root.value] + inorder(root.right)
+
+def postorder(root):
+    if not root:
+        return []
+    return postorder(root.left) + postorder(root.right) + [root.value]
+'''
