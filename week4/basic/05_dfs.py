@@ -43,16 +43,54 @@ def dfs(graph, start, visited=None):
         방문 순서 리스트
     """
     # TODO: visited가 None이면 초기화
-    pass
+    if visited == None:
+        visited = []
     
     # TODO: 현재 정점 방문
-    pass
+    visited.append(start)
     
     # TODO: 인접한 정점들에 대해 재귀
     ## 방문하지 않은 정점이면 재귀 호출
-    pass
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
     
     return visited
+
+
+def dfs2(graph, start, visited=None):
+    """
+    깊이 우선 탐색 (# while과 stack을 사용하여 구현하는 방식)
+    
+    Args:
+        graph: 그래프 딕셔너리
+        start: 현재 정점
+        visited: 방문 리스트
+    
+    Returns:
+        방문 순서 리스트
+    """
+    if visited is None:
+        visited = []
+    
+    visited_check = set()
+    stack = [start]  # 시작 노드를 스택에 넣고 시작
+    
+    while stack:
+        current = stack.pop()  # 가장 최근에 넣은 노드를 꺼냄 (LIFO)
+        
+        if current not in visited_check:
+            visited_check.add(current)  # 방문 체크 (add 사용!)
+            visited.append(current)     # 방문 순서 기록
+            
+            # 현재 노드와 연결된 인접 노드들을 스택에 추가
+            # 역순으로 넣으면 숫자가 작은 노드부터 방문하게 됩니다.
+            for neighbor in reversed(graph[current]):
+                if neighbor not in visited_check:
+                    stack.append(neighbor)
+    
+    return visited
+
 
 # 테스트 케이스
 if __name__ == "__main__":
