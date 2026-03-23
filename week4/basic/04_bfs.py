@@ -64,7 +64,7 @@ def bfs(graph, start):
                 queue.append(i)
                 visited.append(i)
                 visited_check.add(i)
-    
+
     return visited
 
 # 테스트 케이스
