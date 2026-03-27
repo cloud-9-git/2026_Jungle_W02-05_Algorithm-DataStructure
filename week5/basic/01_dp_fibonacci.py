@@ -96,7 +96,7 @@ def fibonacci_memo(n, memo=None):
         return memo[n]
     
     # TODO: 이미 계산한 값이 memo에 있으면 반환
-    if n in memo:
+    if n in memo: # memo[n] in memo라고 하면 안됨. 계산값이 없으면 KeyError 발생.
         return memo[n]
     
     # TODO: 재귀 호출하여 계산하고 memo에 저장
