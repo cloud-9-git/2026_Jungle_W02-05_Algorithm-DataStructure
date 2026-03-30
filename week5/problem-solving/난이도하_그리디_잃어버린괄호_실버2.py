@@ -41,3 +41,21 @@ for i in range(1, len(group_sums)):
     result = result - group_sums[i]
 
 print(result)
+
+'''
+import sys
+
+# 입력을 더 빠르게 받기 위해 sys.stdin.readline 사용 (백준 습관)
+sentence = sys.stdin.readline().strip()
+
+# '-'를 기준으로 나눈 뒤, 각 그룹의 합을 구합니다.
+# 리스트 컴프리헨션을 사용하면 코드가 더 간결해집니다.
+groups = [sum(map(int, part.split('+'))) for part in sentence.split('-')]
+
+# 첫 번째 그룹 값에서 나머지 모든 그룹의 합을 빼줍니다.
+# 언패킹(*)을 활용해 첫 원소와 나머지를 분리할 수 있습니다.
+first_val, *rest_vals = groups
+result = first_val - sum(rest_vals)
+
+print(result)
+'''
